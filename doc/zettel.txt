@@ -329,7 +329,7 @@ formats supported by the `strftime()` function.
 
 It is also possible to use other formatting strings:
 
-- %title -- insert sanitized title
+- %title -- insert sanitized title (strips `.,?!:[](){}/<>` and lowercases)
 - %raw_title -- insert raw title
 - %file_no -- sequentially number files in wiki
 - %file_alpha -- sequentially number files in wiki, but use characters
@@ -363,6 +363,10 @@ or `T` keys).
                                                      *g:zettel_default_title*
 Text used for `%title` formatting string in new Zettel filename if title was
 not provided.
+
+                                                *g:zettel_filename_sanitize*
+When non-zero, Vim-Zettel replaces blacklisted characters with a single
+dash in newly generated filenames before checking for collisions.
 
                                                      *g:zettel_date_format*
 Date format used for date metadata in front matter for a new zettel. It will
